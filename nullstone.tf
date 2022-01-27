@@ -20,12 +20,14 @@ data "ns_subdomain" "this" {
 
 provider "google" {
   alias       = "domain"
-  credentials = base64decode(data.ns_connection.domain.outputs.delegator["key_file"])
-  project     = data.ns_connection.domain.outputs.delegator["project_id"]
+  credentials = local.delegator_key_file
+  project     = local.delegator_project_id
 }
 
 locals {
   domain_name        = data.ns_connection.domain.outputs.name
   domain_zone_id     = data.ns_connection.domain.outputs.zone_id
   domain_nameservers = data.ns_connection.domain.outputs.nameservers
+  delegator_key_file = base64decode(data.ns_connection.domain.outputs.delegator["key_file"])
+  delegator_project_id = lookup(jsondecode(local.delegator_key_file), "project_id")
 }
