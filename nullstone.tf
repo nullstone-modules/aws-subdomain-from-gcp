@@ -19,8 +19,9 @@ data "ns_subdomain" "this" {
 }
 
 provider "google" {
-  credentials = base64decode(data.ns_connection.domain.outputs.delegator["key_file"])
   alias       = "domain"
+  credentials = base64decode(data.ns_connection.domain.outputs.delegator["key_file"])
+  project     = data.ns_connection.domain.outputs.delegator["project_id"]
 }
 
 locals {
