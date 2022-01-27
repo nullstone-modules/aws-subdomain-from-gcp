@@ -5,7 +5,7 @@ resource "aws_route53_zone" "this" {
 
 locals {
   // GCP requires nameservers to be FQDNs (i.e. has a trailing '.'), but AWS doesn't expose them with trailing '.'
-  fq_name_servers = [for ns in aws_route53_zone.this.name_servers : "${trimsuffix(".", ns)}."]
+  fq_name_servers = [for ns in aws_route53_zone.this.name_servers : "${trimsuffix(ns, ".")}."]
 }
 
 resource "google_dns_record_set" "this-delegation" {
