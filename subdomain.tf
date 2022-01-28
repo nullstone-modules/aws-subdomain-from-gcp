@@ -12,7 +12,7 @@ resource "google_dns_record_set" "this-delegation" {
   provider = google.domain
 
   managed_zone = local.domain_zone_id
-  name         = "${local.fqdn}."
+  name         = local.fqdn
   rrdatas      = local.fq_name_servers
   type         = "NS"
   ttl          = 300

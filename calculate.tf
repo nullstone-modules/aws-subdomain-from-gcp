@@ -9,7 +9,7 @@ locals {
 
   subdomain_chunk = "${local.dns_name_chunk}${local.env_chunk}"
   subdomain       = trimsuffix(local.subdomain_chunk, ".")
-  fqdn            = "${local.subdomain_chunk}${trimsuffix(local.domain_name, ".")}"
+  fqdn            = "${local.subdomain_chunk}${local.domain_name}"
 
   // output locals
   name        = aws_route53_zone.this.name
