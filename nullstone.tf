@@ -21,7 +21,6 @@ data "ns_subdomain" "this" {
 provider "google" {
   alias       = "domain"
   credentials = local.delegator_key_file
-  project     = local.delegator_project_id
 }
 
 locals {
