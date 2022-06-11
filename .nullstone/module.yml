@@ -1,0 +1,13 @@
+org_name: nullstone
+name: aws-subdomain-from-gcp
+friendly_name: AWS Subdomain (GCP Domain)
+description: Creates an AWS Subdomain using a GCP Domain.
+category: subdomain
+subcategory: ""
+provider_types:
+    - aws
+platform: route53
+subplatform: ""
+type: ""
+appCategories: []
+is_public: true
